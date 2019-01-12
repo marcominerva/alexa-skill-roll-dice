@@ -1,0 +1,123 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "tira il solido",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "rolldice",
+                    "slots": [
+                        {
+                            "name": "faces",
+                            "type": "AMAZON.NUMBER",
+                            "samples": [
+                                "di {faces} facce",
+                                "a {faces} facce",
+                                "voglio lanciare un dado a {faces} facce",
+                                "un dado a {faces} facce",
+                                "un dado con {faces} facce",
+                                "con {faces} facce",
+                                "{faces} facce",
+                                "{faces}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "lancia il dado di {faces} facce",
+                        "lancia un dado di {faces} facce",
+                        "tira il dado di {faces} facce",
+                        "tira un dado di {faces} facce",
+                        "tira un dado con {faces} facce",
+                        "tira il dado con {faces} facce",
+                        "lancia il dado con {faces} facce",
+                        "lancia un dado con {faces} facce",
+                        "lancia il dado a {faces} facce",
+                        "tira il dado a {faces} facce",
+                        "lancia un dado a {faces} facce ",
+                        "tira un dado a {faces} facce",
+                        "lancia il dado",
+                        "tira il dado",
+                        "lancia un dado",
+                        "tira un dado"
+                    ]
+                }
+            ],
+            "types": []
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "rolldice",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "faces",
+                            "type": "AMAZON.NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.445326220463.1545277213502"
+                            },
+                            "validations": [
+                                {
+                                    "type": "isGreaterThanOrEqualTo",
+                                    "prompt": "Slot.Validation.380921845853.1153714762899.972879928212",
+                                    "value": "2"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.445326220463.1545277213502",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "quante facce ha il dado che devo lanciare?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "devo lanciare un dado di quante facce?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "con quante facce?"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.380921845853.1153714762899.972879928212",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Le facce devono essere almeno due"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Devi dire un numero maggiore o uguale a due"
+                    }
+                ]
+            }
+        ]
+    }
+}
